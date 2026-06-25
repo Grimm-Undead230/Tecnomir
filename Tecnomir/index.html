@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Техномир</title>
+    <link rel="stylesheet" href="csski/main.css" />
+    <link rel="stylesheet" href="csski/twomain.css" />
+    <link rel="stylesheet" href="csski/companybutt.css" />
+    <link rel="stylesheet" href="csski/foot.css" />
+    <link rel="stylesheet" href="csski/catalog.css" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="logo-link">
+                <img src="img/logo.png" alt="Техномир" class="logo-image" width="293" height="50" />
+            </a>
+            <div class="header-actions">
+                <div class="contacts-text">
+                    <a href="tel:+996XXXXXXXXX" class="contact-phone">+996 XXX XXX XXX</a>
+                    <a href="tel:+996XXXXXXXXX" class="contact-phone">+996 XXX XXX XXX</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="catalog.html" class="nav-link">Каталог</a></li>
+                <li><a href="catalog.html?category=components" class="nav-link">Комплектующие</a></li>
+                <li><a href="catalog.html?category=cctv" class="nav-link">Видеонаблюдение</a></li>
+                <li><a href="catalog.html?category=laptops" class="nav-link">Ноутбуки</a></li>
+                <li><a href="orders.html" class="nav-link">Мои заказы</a></li>
+                <li>
+                    <a href="magazzz.html" class="nav-link">
+                        <img src="img/shopping-cart.svg" alt="Корзина" style="width:20px; height:20px;" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="categories-carousel">
+        <div class="container">
+            <h2 class="section-title">Популярные категории</h2>
+            <div class="carousel-wrapper">
+                <button class="carousel-arrow prev">❮</button>
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carouselTrack">
+                        <div class="carousel-slide">
+                            <img src="img/моник.jpg" alt="Мониторы" class="carousel-image" />
+                            <div class="slide-content">
+                                <h3>Мониторы</h3>
+                                <p>От офисных до игровых</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/modems.jpg" alt="Модемы" class="carousel-image" />
+                            <div class="slide-content">
+                                <h3>Модемы</h3>
+                                <p>Роутеры и оборудование</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/videocards.jpg" alt="Видеокарты" class="carousel-image" />
+                            <div class="slide-content">
+                                <h3>Видеокарты</h3>
+                                <p>Для игр и работы</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/processors.jpg" alt="Процессоры" class="carousel-image" />
+                            <div class="slide-content">
+                                <h3>Процессоры</h3>
+                                <p>Intel и AMD</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/printers.jpg" alt="Принтеры" class="carousel-image" />
+                            <div class="slide-content">
+                                <h3>Принтеры</h3>
+                                <p>Лазерные и струйные</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/cameras.jpg" alt="Видеокамеры" class="carousel-image" />
+                            <div class="slide-content">
+                                <h3>Видеокамеры</h3>
+                                <p>Для безопасности</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-arrow next">❯</button>
+            </div>
+            <div class="carousel-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding:50px 0; background:#fff;">
+        <div class="container">
+            <h2 class="section-title">Скидки</h2>
+            <div class="products-grid" id="discountGrid"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/logo.png" alt="Техномир" class="footer-logo-img" />
+                    <p class="footer-description">Магазин компьютерной техники</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Техномир. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div style="position:fixed; bottom:20px; left:20px; z-index:9999; display:flex; gap:10px;">
+        <button onclick="location.href='login.html'" id="loginBtn" style="background:#17252A; color:#fff; border:none; padding:10px 20px; border-radius:30px; cursor:pointer;">Войти</button>
+        <button onclick="logout()" id="logoutBtn" style="background:#ff4757; color:#fff; border:none; padding:10px 20px; border-radius:30px; cursor:pointer; display:none;">Выйти</button>
+    </div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="scripts/supabase.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>

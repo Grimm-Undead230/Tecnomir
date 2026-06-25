@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Админ-панель - Техномир</title>
+    <link rel="stylesheet" href="csski/admin.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Админ-панель</h1>
+            <div>
+                <span id="userEmail" class="user-email"></span>
+                <button class="logout-btn" onclick="logout()">Выйти</button>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('catalog')">Каталог</button>
+            <button class="tab-btn" onclick="showTab('orders')">Заказы</button>
+            <button class="tab-btn" onclick="showTab('main')">Оформление</button>
+        </div>
+
+        <div id="tab-catalog" class="tab-content active">
+            <div class="toolbar">
+                <button class="btn btn-add" id="addBtn">Добавить товар</button>
+                <button class="btn btn-save" id="saveBtn">Сохранить все</button>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width:50px;">ID</th>
+                            <th style="width:120px;">Фото</th>
+                            <th>Название</th>
+                            <th style="width:100px;">Цена</th>
+                            <th style="width:80px;">Скидка %</th>
+                            <th style="width:90px;">В наличии</th>
+                            <th style="width:150px;">Категория</th>
+                            <th style="width:90px;">Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="tab-orders" class="tab-content">
+            <div class="orders-toolbar">
+                <div class="orders-stats" id="ordersStats">
+                    <span class="stat-badge total">Всего: <strong id="totalOrders">0</strong></span>
+                    <span class="stat-badge new">Новые: <strong id="newOrders">0</strong></span>
+                    <span class="stat-badge processing">В обработке: <strong id="processingOrders">0</strong></span>
+                    <span class="stat-badge cancelled">Отменены: <strong id="cancelledOrders">0</strong></span>
+                </div>
+                <div class="orders-filters">
+                    <select id="statusFilter" class="filter-select" onchange="filterOrders()">
+                        <option value="all">Все заказы</option>
+                        <option value="новый">Новые</option>
+                        <option value="processing">В обработке</option>
+                        <option value="cancelled">Отменены</option>
+                    </select>
+                    <button class="btn btn-refresh" onclick="loadOrdersAdmin()">Обновить</button>
+                </div>
+            </div>
+            <div id="ordersList" class="orders-list"></div>
+        </div>
+
+        <div id="tab-main" class="tab-content">
+            <div class="card">
+                <h3>Цвета сайта</h3>
+                <div class="color-row">
+                    <div class="color-item">
+                        <label>Тёмно-синий</label>
+                        <input type="color" id="cDark" class="color-input" value="#17252A">
+                    </div>
+                    <div class="color-item">
+                        <label>Бирюзовый тёмный</label>
+                        <input type="color" id="cDeep" class="color-input" value="#287A78">
+                    </div>
+                    <div class="color-item">
+                        <label>Бирюзовый</label>
+                        <input type="color" id="cMedium" class="color-input" value="#3AAFA9">
+                    </div>
+                    <div class="color-item">
+                        <label>Светло-бирюзовый</label>
+                        <input type="color" id="cLight" class="color-input" value="#DEF2F1">
+                    </div>
+                    <div class="color-item">
+                        <label>Белый</label>
+                        <input type="color" id="cWhite" class="color-input" value="#FEFFFF">
+                    </div>
+                </div>
+                <button class="btn btn-save" onclick="applyColors()">Применить цвета</button>
+            </div>
+
+            <div class="card">
+                <h3>Настройки корзины</h3>
+                <div class="form-group">
+                    <label>Максимум одного товара в корзине</label>
+                    <div style="display:flex;gap:10px;align-items:center;">
+                        <input type="number" id="maxCartQuantity" min="1" max="999" value="99" style="width:120px;padding:10px;border:2px solid #ddd;border-radius:8px;font-size:1rem;">
+                        <span style="color:#888;font-size:0.85rem;">(от 1 до 999)</span>
+                    </div>
+                    <div style="font-size:0.8rem;color:#999;margin-top:5px;">Сколько штук одного товара можно добавить в корзину</div>
+                </div>
+                <button class="btn btn-save" onclick="saveCartSettings()">Сохранить настройку</button>
+            </div>
+
+            <div class="card">
+                <h3>Текст на главной</h3>
+                <div class="form-group">
+                    <label>Заголовок карусели</label>
+                    <input type="text" id="txtCarousel" placeholder="Заголовок категории">
+                </div>
+                <div class="form-group">
+                    <label>Телефон 1</label>
+                    <input type="text" id="txtPhone1" placeholder="Телефон 1">
+                </div>
+                <div class="form-group">
+                    <label>Телефон 2</label>
+                    <input type="text" id="txtPhone2" placeholder="Телефон 2">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="txtEmail" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label>Копирайт</label>
+                    <input type="text" id="txtCopyright" placeholder="Копирайт">
+                </div>
+                <button class="btn btn-save" onclick="saveTexts()">Сохранить текст</button>
+            </div>
+
+            <div class="card">
+                <h3>Слайды карусели</h3>
+                <div id="carouselEditor"></div>
+                <button class="btn btn-add" onclick="addCarousel()" style="margin-top:15px;">Добавить слайд</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalOrderTitle">Заказ #</h2>
+                <button class="modal-close" onclick="closeOrderModal()">&times;</button>
+            </div>
+            <div id="modalOrderBody"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="scripts/supabase.js"></script>
+    <script src="scripts/admin.js"></script>
+</body>
+</html>
