@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактор главной страницы - Техномир</title>
+    <link rel="stylesheet" href="csski/endmin.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚙️ Редактор главной страницы</h1>
+            <a href="index.html" class="site-link">🔗 На сайт</a>
+        </div>
+
+        <div class="card">
+            <h3>🎨 Цвета сайта</h3>
+            <div class="color-row">
+                <div class="color-item">
+                    <label>Тёмно-синий</label>
+                    <input type="color" id="color_dark" value="#17252A">
+                </div>
+                <div class="color-item">
+                    <label>Тёмный бирюзовый</label>
+                    <input type="color" id="color_deep" value="#287A78">
+                </div>
+                <div class="color-item">
+                    <label>Бирюзовый</label>
+                    <input type="color" id="color_medium" value="#3AAFA9">
+                </div>
+                <div class="color-item">
+                    <label>Светло-бирюзовый</label>
+                    <input type="color" id="color_light" value="#DEF2F1">
+                </div>
+                <div class="color-item">
+                    <label>Белый</label>
+                    <input type="color" id="color_white" value="#FEFFFF">
+                </div>
+            </div>
+            <button onclick="saveColors()" class="btn-save">💾 Сохранить цвета</button>
+        </div>
+
+        <div class="card">
+            <h3>📝 Текст на главной</h3>
+            <div class="form-group">
+                <label>Заголовок карусели</label>
+                <input type="text" id="carousel_title" placeholder="Заголовок категории" value="Популярные категории">
+            </div>
+            <div class="form-group">
+                <label>Заголовок брендов</label>
+                <input type="text" id="brands_title" placeholder="Заголовок бренды" value="Популярные бренды">
+            </div>
+            <div class="form-group">
+                <label>Телефон 1</label>
+                <input type="text" id="phone1" placeholder="Телефон 1" value="+996 XXX XXX XXX">
+            </div>
+            <div class="form-group">
+                <label>Телефон 2</label>
+                <input type="text" id="phone2" placeholder="Телефон 2" value="+996 XXX XXX XXX">
+            </div>
+            <div class="form-group">
+                <label>Копирайт</label>
+                <input type="text" id="copyright" placeholder="Копирайт" value="© 2026 Техномир. Все права защищены.">
+            </div>
+            <button onclick="saveTexts()" class="btn-save">💾 Сохранить текст</button>
+        </div>
+
+        <div class="card">
+            <h3>🖼️ Карусель</h3>
+            <div id="carouselList"></div>
+            <div style="display:flex;gap:10px;margin-top:15px;flex-wrap:wrap;">
+                <button onclick="addSlide()" class="btn-add">➕ Добавить слайд</button>
+                <button onclick="saveCarousel()" class="btn-save">💾 Сохранить карусель</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="scripts/supabase.js"></script>
+    <script src="scripts/endmin.js"></script>
+</body>
+</html>

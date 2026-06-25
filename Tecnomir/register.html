@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация - Техномир</title>
+    <link rel="stylesheet" href="csski/main.css">
+    <link rel="stylesheet" href="csski/register.css">
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-box">
+            <h1>Регистрация</h1>
+            <p class="register-subtitle">Создайте новый аккаунт</p>
+            <input type="text" id="username" placeholder="Логин" autocomplete="username">
+            <input type="password" id="password" placeholder="Пароль" autocomplete="new-password">
+            <input type="password" id="confirmPassword" placeholder="Подтвердите пароль" autocomplete="new-password">
+            <button id="registerBtn">Зарегистрироваться</button>
+            <div class="info">
+                <a href="login.html">Уже есть аккаунт? Войти</a>
+            </div>
+            <div id="errorMsg" class="error"></div>
+            <div id="successMsg" class="success"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="scripts/supabase.js"></script>
+    <script src="scripts/register.js"></script>
+</body>
+</html>
